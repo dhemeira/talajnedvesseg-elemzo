@@ -13,6 +13,31 @@
 <body>
   <div class="container">
     <h1>Talajnedvesség elemző</h1>
+
+    <div class="row my-3">
+      <div class="col-6">
+
+        <div class="form-floating mb-3">
+          <textarea class="form-control" placeholder="Talaj típusa" id="talaj-tipus" style="height: 12.5em"></textarea>
+          <label for="talaj-tipus">Talaj típusa</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <textarea class="form-control" placeholder="Mérés 1" id="meres-2" style="height: 12.5em"></textarea>
+          <label for="meres-2">Mérés 1</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <textarea class="form-control" placeholder="Mérés 2" id="meres-1" style="height: 12.5em"></textarea>
+          <label for="meres-1">Mérés 2</label>
+        </div>
+
+        <div class="d-grid">
+          <button type="button" onclick="submit()" class="btn btn-primary">Küldés</button>
+        </div>
+      </div>
+      <div class="col-6" id="eredmeny"></div>
+    </div>
   </div>
 
   <script src="main.js"></script>
