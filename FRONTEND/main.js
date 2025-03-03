@@ -17,17 +17,25 @@ async function submit() {
     })
   })
     .then(async resp => {
-      console.log('Response: ', resp)
       if (resp.status === 200) {
         const data = await resp.json()
         displayResult(data)
       }
     })
-    .catch(error => console.log(error))
+    .catch(error => console.error(error))
+}
+
+document.querySelectorAll('textarea').forEach(textarea => {
+  textarea.addEventListener('change', () => {
+    removeWhitespaces(textarea)
+  })
+})
+
+function removeWhitespaces(textarea) {
+  textarea.value = textarea.value.trim().replaceAll(" ", "")
 }
 
 function displayResult(data) {
-  console.log(data)
   const min = Math.min(...data.map(row => Math.min(...row)))
   const max = Math.max(...data.map(row => Math.max(...row)))
 
@@ -83,6 +91,10 @@ function testData5By5() {
     552.9238429,388.6590505,877.9482358,693.8786444,255.2241038
     927.5234866,358.335735,359.6940165,240.604347,508.8106815
     611.5528772,937.5820018,131.415368,40.17513664,401.7750407`;
+
+  document.querySelectorAll('textarea').forEach(textarea => {
+    removeWhitespaces(textarea)
+  })
 }
 
 function testData3By3() {
@@ -98,4 +110,8 @@ function testData3By3() {
     `326.8790814,142.532508,451.0244456
     196.8179513,254.0216116,135.4596622
     552.9238429,388.6590505,877.9482358`;
+
+  document.querySelectorAll('textarea').forEach(textarea => {
+    removeWhitespaces(textarea)
+  })
 }
