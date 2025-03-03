@@ -7,6 +7,7 @@
         public List<List<double>> MatrixC { get; set; }
 
         public List<List<double>> MatrixAErtekek => TipusbolErtek(MatrixA);
+        public List<List<double>> NormalizaltC => MatrixNormalizalas(MatrixC);
 
         private static readonly Dictionary<string, double> TalajTipusok = new Dictionary<string, double>
         {
@@ -35,6 +36,25 @@
                 ertekMatrix.Add(row);
             }
             return ertekMatrix;
+        }
+
+        public static List<List<double>> MatrixNormalizalas(List<List<double>> matrix)
+        {
+            double min = matrix.Min(row => row.Min());
+            double max = matrix.Max(row => row.Max());
+
+            List<List<double>> normalizaltMatrix = new List<List<double>>();
+            for (int i = 0; i < matrix.Count; i++)
+            {
+                List<double> row = new List<double>();
+                for (int j = 0; j < matrix[i].Count; j++)
+                {
+                    double normalizedValue = (matrix[i][j] - min) / (max - min);
+                    row.Add(normalizedValue);
+                }
+                normalizaltMatrix.Add(row);
+            }
+            return normalizaltMatrix;
         }
     }
 }
