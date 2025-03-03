@@ -34,10 +34,17 @@
 
         <div class="d-grid gap-3">
           <button type="button" onclick="submit()" class="btn btn-primary">Küldés</button>
-          <button type="button" onclick="fillWithTestData()" class="btn btn-primary">Teszt Adat</button>
+          <div class="btn-group">
+            <button type="button" onclick="testData5By5()" class="btn btn-primary">Minta adat 5x5</button>
+            <button type="button" onclick="testData3By3()" class="btn btn-primary">Minta adat 3x3</button>
+          </div>
         </div>
       </div>
-      <div class="col-6" id="eredmeny"></div>
+      <div class="col-6">
+        <table id="eredmeny-tabla">
+          <tbody id="eredmeny"></tbody>
+        </table>
+      </div>
     </div>
   </div>
 

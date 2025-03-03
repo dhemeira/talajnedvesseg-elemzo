@@ -84,3 +84,18 @@ function testData5By5() {
     927.5234866,358.335735,359.6940165,240.604347,508.8106815
     611.5528772,937.5820018,131.415368,40.17513664,401.7750407`;
 }
+
+function testData3By3() {
+  document.querySelector('#talaj-tipus').value =
+    `Sós,Tőzeges,Lúgos
+    Agyagos,Agyagos,Tőzeges
+    Szerves,Lúgos,Homokos`;
+  document.querySelector('#meres-1').value =
+    `0.616555682,0.640437434,0.394921648
+    0.73640787,0.533786646,0.010040263
+    0.482072405,0.307524409,0.554290788`;
+  document.querySelector('#meres-2').value =
+    `326.8790814,142.532508,451.0244456
+    196.8179513,254.0216116,135.4596622
+    552.9238429,388.6590505,877.9482358`;
+}
