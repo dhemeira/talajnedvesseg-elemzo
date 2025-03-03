@@ -1,4 +1,6 @@
 
+using System.Globalization;
+
 namespace api
 {
     public class Program
@@ -7,9 +9,13 @@ namespace api
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            // Set the global culture to invariant culture
+            CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
+            CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
 
+            // Add services to the container.
             builder.Services.AddControllers();
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

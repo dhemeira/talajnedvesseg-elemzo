@@ -8,8 +8,8 @@ namespace api.Controllers;
 public class TalajnedvessegController : ControllerBase
 {
     [HttpPost(Name = "Talajnedvesség")]
-    public double[] Post([FromBody] Talajnedvesseg talajnedvesseg)
+    public List<List<double>> Post([FromBody] Talajnedvesseg talajnedvesseg)
     {
-        return new double[2] { 3, 2 };
+        return talajnedvesseg.MatrixAErtekek;
     }
 }
