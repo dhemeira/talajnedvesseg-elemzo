@@ -1,5 +1,6 @@
 using api.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace api.Controllers;
 
@@ -10,10 +11,11 @@ public class TalajnedvessegController : ControllerBase
     [HttpPost(Name = "Talajnedvesség")]
     public List<List<double>> Post([FromBody] Talajnedvesseg talajnedvesseg)
     {
-        return MatrixSzorzas(talajnedvesseg.MatrixB, talajnedvesseg.NormalizaltC);
+        List<List<double>> BszerCnorm = MatrixMuvelet(talajnedvesseg.MatrixB, talajnedvesseg.NormalizaltC, (x, y) => x * y);
+        return MatrixMuvelet(BszerCnorm, talajnedvesseg.MatrixAErtekek, (x, y) => x / y);
     }
 
-    private List<List<double>> MatrixSzorzas(List<List<double>> a, List<List<double>> b)
+    private static List<List<double>> MatrixMuvelet(List<List<double>> a, List<List<double>> b, Func<double,double,double> muvelet)
     {
         List<List<double>> result = new List<List<double>>(a.Count);
 
@@ -22,7 +24,11 @@ public class TalajnedvessegController : ControllerBase
             result.Add(new List<double>(a[0].Count));
             for (int j = 0; j < a[0].Count; j++)
             {
-                result[i].Add(a[i][j] * b[i][j]);
+                double eredmeny = muvelet(a[i][j], b[i][j]);
+                if (!double.IsNaN(eredmeny) && !double.IsInfinity(eredmeny))
+                    result[i].Add(eredmeny);
+                else 
+                    result[i].Add(0);
             }
         }
 
