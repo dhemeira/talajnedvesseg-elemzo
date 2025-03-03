@@ -1,0 +1,12 @@
+#eredmeny-tabla{
+  border-radius: 0.375rem;
+  overflow: hidden;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.cell {
+  display: inline-block;
+  border: 1px solid black;
+  aspect-ratio: 1;
+}
